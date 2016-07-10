@@ -5,7 +5,7 @@ $(function(){
 	var answer = "";
 
 	// place input into textarea
-	$(".zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine").on("click",function(){
+	$(".zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .decimal").on("click",function(){
 		value += $(this).attr("value");
 		$(".text").html(value);
 	});
@@ -13,13 +13,13 @@ $(function(){
 	// add
 	$(".add").on("click",function(){
 		if(current == ""){
-			current = parseInt(value);
+			current = parseFloat(value);
 			operation = "add";
 			value = "";
 		}
 		else{
 			operation = "add";
-			current = parseInt(current)+parseInt(value);
+			current = parseFloat(current)+parseFloat(value);
 			value = "";
 		}
 	});
@@ -27,12 +27,12 @@ $(function(){
 	// subtract
 	$(".subtract").on("click",function(){
 		if(current == ""){
-			current = parseInt(value);
+			current = parseFloat(value);
 			operation = "subtract";
 			value = "";
 		}
 		else{
-			current = parseInt(current) - parseInt(value);
+			current = parseFloat(current) - parseFloat(value);
 			value = "";
 		}
 	});
@@ -40,12 +40,12 @@ $(function(){
 	// multiply
 	$(".multiply").on("click",function(){
 		if(current == ""){
-			current = parseInt(value);
+			current = parseFloat(value);
 			operation = "multiply";
 			value = "";
 		}
 		else{
-			current = parseInt(current) * parseInt(value);
+			current = parseFloat(current) * parseFloat(value);
 			value = "";
 		}
 	});
@@ -53,12 +53,12 @@ $(function(){
 	// divide
 	$(".divide").on("click",function(){
 		if(current == ""){
-			current = parseInt(value);
+			current = parseFloat(value);
 			operation = "divide";
 			value = "";
 		}
 		else{
-			current = parseInt(current) / parseInt(value);
+			current = parseFloat(current) / parseFloat(value);
 			value = "";
 		}
 	});
@@ -66,19 +66,19 @@ $(function(){
 	// equals
 	$(".equals").on("click",function(){
 		if(operation == "add"){
-			answer = parseInt(current) + parseInt(value);
+			answer = parseFloat(current) + parseFloat(value);
 			$(".text").html(answer);
 		}
 		else if(operation == "subtract"){
-			answer = parseInt(current) - parseInt(value);
+			answer = parseFloat(current) - parseFloat(value);
 			$(".text").html(answer);
 		}
 		else if(operation == "multiply"){
-			answer = parseInt(current) * parseInt(value);
+			answer = parseFloat(current) * parseFloat(value);
 			$(".text").html(answer);
 		}
 		else if(operation == "divide"){
-			answer = parseInt(current) / parseInt(value);
+			answer = parseFloat(current) / parseFloat(value);
 			$(".text").html(answer);
 		}
 		current = "";
@@ -90,11 +90,11 @@ $(function(){
 	// change value from positive to negative or negative to positive
 	$(".plusMinus").on("click",function(){
 		if(current == ""){
-			value = parseInt(value) * -1;
+			value = parseFloat(value) * -1;
 			$(".text").html(value);
 		}
 		else{
-			current = parseInt(value) * -1;
+			current = parseFloat(value) * -1;
 			$(".text").html(current);
 		}
 	});
