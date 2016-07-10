@@ -1,17 +1,29 @@
-.text{
-	width:20%;
-	margin-right: auto;
-	margin-left: auto;
-	font-size: 18px;
-	width: 206px;
-}
-.btn{
-	margin-bottom: 5px;
-}
-.plusMinus{
-	padding-right: 12px;
-	padding-left: 12px;
-}
 .jumbotron{
 	margin-top: 20px;
+}
+	h2{
+	font-family: 'Lora', serif;
+	}
+	.text{
+		width:20%;
+		margin-right: auto;
+		margin-left: auto;
+		font-size: 18px;
+		width: 206px;
+	}
+	.btn{
+		margin-bottom: 5px;
+		color: black;
+	}
+	.plusMinus{
+		padding-right: 12px;
+		padding-left: 12px;
+	}
+
+@media screen and (min-width:600px){
+	.jumbotron{
+		width: 45%;
+		margin-right: auto;
+		margin-left: auto;
+	}
 }
