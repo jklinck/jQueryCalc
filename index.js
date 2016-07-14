@@ -10,7 +10,6 @@ $(function(){
 	var answerArr = []; // separates inputs into distinct numbers and operators
 	var currentIndex = 0; // used to increment indices of answerArr
 	var sqrRt = false;
-	var square = "&radic;";
 
 	// place input into textarea
 	$(".input").on("click",function(){
@@ -43,7 +42,7 @@ $(function(){
 		answerArr[currentIndex] = "(" + (answerArr[currentIndex]) * (-1) + ")";
 		// the new value of answerArr[currentIndex] needs to be put in parethesis otherwise parser.js will throw a parity error
 		value = ""; 
-		// value is cleared so it can be repopulated wit the for loop below
+		// value is cleared so it can be repopulated with the for loop below
 		for(var i=0;i<answerArr.length;i++){
 			value += answerArr[i];
 		}
@@ -57,12 +56,12 @@ $(function(){
 
 	// equals
 	$(".equals").on("click",function(){
-		// use Parser.evaulate function from parser.js
 		if(sqrRt){
 			answer = Math.sqrt(value);
 			$(".text").html(answer);
 			sqrRt = false;
 		}
+		// use Parser.evaulate function from parser.js
 		else{
 			answer = Parser.evaluate(value);
 			$(".text").html(answer);
