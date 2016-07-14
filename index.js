@@ -1,3 +1,7 @@
+/*
+	Need to have square root symbol show in textarea
+*/
+
 $(function(){
 	var value = ""; // displays user input in text area
 	var value2 = ""; // collects inputs for answerArr
@@ -5,6 +9,8 @@ $(function(){
 	var answer = ""; // uses parser.js to evaluate "value" variable
 	var answerArr = []; // separates inputs into distinct numbers and operators
 	var currentIndex = 0; // used to increment indices of answerArr
+	var sqrRt = false;
+	var square = "&radic;";
 
 	// place input into textarea
 	$(".input").on("click",function(){
@@ -15,6 +21,13 @@ $(function(){
 			value += current;
 			currentIndex++;
 			value2 = "";
+			$(".text").html(value);
+		}
+		else if(current == "pi"){
+			current = (Parser.evaluate("22/7")).toFixed(9);
+			value += current;
+			value2 += current; // kept track of to populate answerArr[]
+			answerArr[currentIndex] = value2;
 			$(".text").html(value);
 		}
 		else{
@@ -37,17 +50,29 @@ $(function(){
 		$(".text").html(value);
 	});
 
+	$(".sqrRt").on("click",function(){
+		sqrRt = true;
+		// sets sqrRt variable to true so that it can perform the if statement in the equals method below
+	})
+
 	// equals
 	$(".equals").on("click",function(){
-		// user Parser.evaulate function from parser.js
-		answer = Parser.evaluate(value);
-		$(".text").html(answer);
+		// use Parser.evaulate function from parser.js
+		if(sqrRt){
+			answer = Math.sqrt(value);
+			$(".text").html(answer);
+			sqrRt = false;
+		}
+		else{
+			answer = Parser.evaluate(value);
+			$(".text").html(answer);
+		}
 		value = answer;
+		currentIndex = 0;
+		answerArr = [value]; // this is done so the only value left in answerArr[] is the answer from the current calculation 
 		current = "";
 		value2 = "";
 		answer = "";
-		currentIndex = 0;
-		answerArr = [value]; // this is done so the only value left in answerArr[] is the answer from the previous calculation and can thus start a new calculation
 	});
 
 	// clear
@@ -58,9 +83,14 @@ $(function(){
 		answer = "";
 		currentIndex = 0;
 		answerArr = [];
+		sqrRt = false;
 		$(".text").html(value);
 	});
 });
+
+
+
+
 
 
 

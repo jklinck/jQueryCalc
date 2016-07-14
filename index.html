@@ -2,10 +2,12 @@
 <html>
 <head>
 	<title>jQuery calculator</title>
+	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="index.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<script type="text/javascript" src="parser.js"></script>
+	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 </head>
@@ -14,7 +16,7 @@
 		<div class="jumbotron">
 			<h2 class="text-center">jQuery Calculator</h2>
 			<div class="row form-group text-center">
-				<textarea rows="1" class="form-control text"></textarea>
+				<textarea rows="1" class="form-control text" readonly></textarea>
 			</div>
 			<div class="row text-center">
 				<button value="0" class="btn btn-warning btn-lg input">0</button>
@@ -32,19 +34,23 @@
 				<button class="btn btn-warning btn-lg input" value="8">8</button>
 				<button class="btn btn-warning btn-lg input" value="9">9</button>
 				<button class="btn btn-warning btn-lg input" value="+">+</button>
-				<button class="btn btn-warning btn-lg input" value="-">-</button>
+				<button class="btn btn-warning btn-lg input btnWidth" value="-">-</button>
 			</div>
 			<div class="row text-center">
-				<button class="btn btn-warning btn-lg input" value="*">*</button>
+				<button class="btn btn-warning btn-lg input btnWidth" value="*">*</button>
 				<button class="btn btn-warning btn-lg input" value="/">/</button>
 				<button class="btn btn-warning btn-lg equals">=</button>
 				<button class="btn btn-warning btn-lg clear">C</button>
 			</div>
 			<div class="row text-center">
-				<button class="btn btn-warning btn-lg plusMinus">+/-</button>
-				<button class="btn btn-warning btn-lg input" value=".">.</button>
-				<button class="btn btn-warning btn-lg input" value="(">(</button>
-				<button class="btn btn-warning btn-lg input" value=")">)</button>
+				<button class="btn btn-warning btn-lg plusMinus btnWidth">+/-</button>
+				<button class="btn btn-warning btn-lg input btnWidth" value=".">.</button>
+				<button class="btn btn-warning btn-lg input parenthesis" value="(">(</button>
+				<button class="btn btn-warning btn-lg input parenthesis" value=")">)</button>
+			</div>
+			<div class="row text-center">
+				<button class="btn btn-warning btn-lg sqrRt" value="&radic;">&radic;</button>
+				<button class="btn btn-warning btn-lg input pi" value="pi">&pi;</button>
 			</div>
 		</div>
 	</div>
