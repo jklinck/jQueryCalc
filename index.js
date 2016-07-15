@@ -1,15 +1,12 @@
-/*
-	Need to have square root symbol show in textarea
-*/
-
 $(function(){
 	var value = ""; // displays user input in text area
 	var value2 = ""; // collects inputs for answerArr
 	var current = ""; // collects current user input
 	var answer = ""; // uses parser.js to evaluate "value" variable
-	var answerArr = []; // separates inputs into distinct numbers and operators
+	var answerArr = []; // separates numbers and operators into separate indices
 	var currentIndex = 0; // used to increment indices of answerArr
 	var sqrRt = false;
+	var sqrRtIcon = $(".sqrRt").attr("value");
 
 	// place input into textarea
 	$(".input").on("click",function(){
@@ -22,13 +19,27 @@ $(function(){
 			value2 = "";
 			$(".text").html(value);
 		}
+		else if(current == sqrRtIcon){
+			answerArr[currentIndex] = current;
+			value += current;
+			currentIndex++;
+			value2 = "";
+			$(".text").html(value);
+		}
 		else if(current == "pi"){
-			current = (Parser.evaluate("22/7")).toFixed(9);
+			current = 3.142857143;
 			value += current;
 			value2 += current; // kept track of to populate answerArr[]
 			answerArr[currentIndex] = value2;
 			$(".text").html(value);
 		}
+		// else if(current == sqrRtIcon){
+		// 	value += current;
+		// 	$(".text").html(value);
+		// }
+		// else if(sqrRt){
+
+		// }
 		else{
 			value += current;
 			value2 += current; // kept track of to populate answerArr[]
@@ -57,6 +68,8 @@ $(function(){
 	// equals
 	$(".equals").on("click",function(){
 		if(sqrRt){
+			answerArr.shift(); // this is needed to remove the square root icon from answerArr so that answerArr[0] is set to the number we are trying to calculate the square root of
+			value = answerArr[0];
 			answer = Math.sqrt(value);
 			$(".text").html(answer);
 			sqrRt = false;
